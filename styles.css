@@ -1,0 +1,109 @@
+/* A bul tanna setting */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: sans-serif;
+  overflow: hidden; /* A pawimawh! A pangngai scroll a ti bo */
+}
+
+/* Page zawng zawng awmna container */
+.fullpage-container {
+  height: 100vh;
+  overflow: hidden; /* SCROLL KAN TI BO, SWIPE-IN A THLAK DAWN */
+  background: linear-gradient(90deg, #fff3f8, #87CEEB);
+}
+
+/* Page tin style */
+.page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* A chung aṭanga in-align se */
+  padding: 40px 20px 80px 20px; /* Chung, vei-ding, hnuai padding (footer tan) */
+  overflow-y: auto; /* A PAWIMAWH: Page a sei chuan a chhungah a in-scroll thei ang */
+}
+
+/* Page content dahna container */
+.content {
+  max-width: 800px;
+  width: 90%;
+}
+
+/* == I STYLE HMAN SA KAN LA LUT ANG == */
+h3, h4 {
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+h3 { text-align: center; }
+p { line-height: 1.8; margin-bottom: 1em; }
+.noti { text-align: center; margin: 20px 0; }
+.date { text-align: right; margin-bottom: 1em; }
+.office { font-weight: bold; }
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1em;
+}
+.item .office {
+  width: 200px;
+  flex-shrink: 0;
+}
+.item .nihna {
+  flex-grow: 1;
+}
+
+.sd {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+}
+.s {
+  text-align: center;
+  width: 280px;
+}
+.s span {
+  display: block; /* Tlar hrangin a siam ang */
+  line-height: 1.5;
+}
+
+/* FOOTER STYLE (Fixed-in kan siam ang) */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(51, 51, 51, 0.8); /* Fiah deuhin a mawi zawk */
+  padding: 10px 0;
+  z-index: 100;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: white;
+}
+
+.page-link {
+  color: white;
+  background-color: transparent;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.page-link:disabled {
+  color: #888;
+  cursor: not-allowed;
+}
+
+
