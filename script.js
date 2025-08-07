@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.fullpage-container');
+    
     const pages = document.querySelectorAll('.page');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
@@ -7,55 +7,74 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalPages = pages.length;
     let currentPageIndex = 0;
     
-    let touchStartY = 0;
-    let touchEndY = 0;
-    let isScrolling = false; // A in-scroll lai a in-swipe nawn loh nan
+    // Swipe-na atana variable
+    let touchStartX = 0; // Y aiah X kan hmang
+    let touchEndX = 0;   // Y aiah X kan hmang
 
     function updateUI() {
-        pageIndicator.textContent = `${currentPageIndex + 1} / ${totalPages}`;
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === totalPages - 1;
+        if(pageIndicator) {pageIndicator.textContent = `${currentPageIndex + 1} / ${totalPages}`;}
+        if(prevBtn) {prevBtn.disabled = currentPageIndex === 0;}
+        if(nextBtn) {nextBtn.disabled = currentPageIndex === totalPages - 1;}
     }
 
-    function scrollToPage(index) {
-        if (index >= 0 && index < totalPages) {
-            pages[index].scrollIntoView({ behavior: 'smooth' });
-            currentPageIndex = index;
-            updateUI();
+    // Scroll-na function siam ṭhatna
+    function goToPage(newIndex) {
+      if (newIndex < 0 || newIndex >= totalPages) {
+            return;
         }
+        const oldPageIndex = currentPageIndex;
+        const direction = newIndex > oldPageIndex ? 'next' : 'prev';
+        if (direction === 'next') {
+            pages[oldPageIndex].classList.remove('active');
+            pages[oldPageIndex].classList.add('prev'); // A liam bo tawh tih hriatna
+        } else { // 'prev' a nih chuan
+            pages[oldPageIndex].classList.remove('active');}
+            const newPage = pages[newIndex];
+        newPage.classList.remove('prev'); // A lo let leh a nih chuan 'prev' class kan paih ang
+        newPage.classList.add('active');
+
+        currentPageIndex = newIndex;
+        updateUI();
     }
 
-    nextBtn.addEventListener('click', () => scrollToPage(currentPageIndex + 1));
-    prevBtn.addEventListener('click', () => scrollToPage(currentPageIndex - 1));
+            
+
+    // Button event-te (a ngai reng)
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {goToPage(currentPageIndex +1);});}
+ if (prevBtn) {
+   prevBtn.addEventListener('click', () => {goToPage(currentPageIndex - 1);});}
     
-    function handleTouchStart(event) {
-        touchStartY = event.changedTouches[0].screenY;
-    }
-
-    function handleTouchEnd(event) {
-        touchEndY = event.changedTouches[0].screenY;
-        handleSwipe();
-    }
+    // ===== HORIZONTAL SWIPE LOGIC =====
+    document.body.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    document.body.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();});
 
     function handleSwipe() {
-        if (isScrolling) return; // A in-scroll lai chuan engmah ti suh
-
-        const swipeDistance = touchStartY - touchEndY;
+        const swipeDistance = touchStartX - touchEndX;
         const swipeThreshold = 50; 
 
-        if (swipeDistance > swipeThreshold) { // Swipe up
-            if (currentPageIndex < totalPages - 1) {
-                scrollToPage(currentPageIndex + 1);
-            }
-        } else if (swipeDistance < -swipeThreshold) { // Swipe down
-            if (currentPageIndex > 0) {
-                scrollToPage(currentPageIndex - 1);
-            }
-        }
+        // A VEI LAMA SWIPE (Swipe Left)
+        if (swipeDistance > swipeThreshold) {
+            goToPage(currentPageIndex + 1);}
+        
+        
+        
+        // A DINGLAMA SWIPE (Swipe Right)
+        if (swipeDistance < -swipeThreshold) {
+            goToPage(currentPageIndex - 1);}
+        
     }
-
-    container.addEventListener('touchstart', handleTouchStart, false);
-    container.addEventListener('touchend', handleTouchEnd, false);
+        
     
+        pages[0].classList.add('active');
     updateUI();
-});
+  });
+
+
+
+    

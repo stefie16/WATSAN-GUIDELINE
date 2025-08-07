@@ -12,20 +12,39 @@ html, body {
 
 /* Page zawng zawng awmna container */
 .fullpage-container {
+  position: relative;
   height: 100vh;
-  overflow: hidden; /* SCROLL KAN TI BO, SWIPE-IN A THLAK DAWN */
+  width: 100%;
+  overflow: hidden;
+  
   background: linear-gradient(90deg, #fff3f8, #87CEEB);
 }
 
 /* Page tin style */
 .page {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100%;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transform: translateX(100%); /* A dinglamah dah bo vek */
+  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: flex-start; /* A chung aṭanga in-align se */
-  padding: 40px 20px 80px 20px; /* Chung, vei-ding, hnuai padding (footer tan) */
+  
   overflow-y: auto; /* A PAWIMAWH: Page a sei chuan a chhungah a in-scroll thei ang */
+}
+.page.active {
+  transform: translateX(0); /* A hmun dikah a rawn lang ang */
+  opacity: 1;
+  z-index: 10; /* A lang lai chu a chung berah a awm ang */
+}
+.page.prev {
+  transform: translateX(-100%); /* A veilamah a liam bo ang */
+  opacity: 1; /* Heta opacity hi a ṭha, a liam lai a hmuh theih nan */
+  z-index: 9;
 }
 
 /* Page content dahna container */
@@ -40,7 +59,7 @@ h3, h4 {
   font-weight: bold;
 }
 h3 { text-align: center; }
-p { line-height: 1.8; margin-bottom: 1em; }
+p { line-height: 1.8; margin-bottom: 0.8em; }
 .noti { text-align: center; margin: 20px 0; }
 .date { text-align: right; margin-bottom: 1em; }
 .office { font-weight: bold; }
@@ -78,17 +97,9 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(51, 51, 51, 0.8); /* Fiah deuhin a mawi zawk */
+  background-color: transparent;
   padding: 10px 0;
   z-index: 100;
-}
-
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  color: white;
 }
 
 .page-link {
@@ -104,6 +115,10 @@ footer {
 .page-link:disabled {
   color: #888;
   cursor: not-allowed;
+}
+#page-indicator {
+    color: white;
+    font-size: 1rem;
 }
 
 
