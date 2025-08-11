@@ -95,30 +95,38 @@ p { line-height: 1.8; margin-bottom: 0.8em; }
 footer {
   position: fixed;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  right: 50%;
   width: 100%;
   background-color: transparent;
   padding: 10px 0;
   z-index: 100;
 }
-
 .page-link {
   color: white;
   background-color: transparent;
   padding: 8px 12px;
-  font-size: 1.2rem;
+  font-size: 2rem;
+  font-weight: bold;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+ 
 }
-
 .page-link:disabled {
-  color: #888;
+  color: transparent;
   cursor: not-allowed;
 }
 #page-indicator {
-    color: white;
+    color: rgb(199, 49, 11);
     font-size: 1rem;
-}
+    font-weight: bold;
+  }
+ .page-link:hoover {
+  color: black;
+
+ }      
+
+
 
 
