@@ -74,7 +74,42 @@ document.addEventListener('DOMContentLoaded', () => {
         pages[0].classList.add('active');
     updateUI();
   });
+  // ===== MENU LOGIC =====
+  const menuBtn = document.getElementById('menu-btn');
+  const menuOverlay = document.getElementById('menu-overlay');
+  const closeMenuBtn = document.getElementById('close-menu-btn');
+  const imageUploadInput = document.getElementById('image-upload-input');
+  const imagePreview = document.getElementById('image-preview');
 
-
-
+  if (menuBtn && menuOverlay && closeMenuBtn) {
+    // ===== MENU BUTTON HAWNNA =====
+    menuBtn.addEventListener('click', () => {
+        menuOverlay.style.display = 'flex';
+    })
     
+    // ===== CLOSE BUTTON KHAR NA =====
+    closeMenuBtn.addEventListener('click', () => {
+        menuOverlay.style.display = 'none';
+    });
+}
+       // ===== THLALAK PREVIEW LEH UPLOAD-NA =====
+
+       if (imageUploadInput && imagePreview) {
+        imageUploadInput.addEventListener('change', (event) => {
+
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = '';
+                imagePreview.style.display = 'none';
+            }
+        });
+    }
