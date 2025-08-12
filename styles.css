@@ -135,9 +135,10 @@ footer {
   cursor: not-allowed;
 }
 #page-indicator {
-    color: rgb(199, 49, 11);
-    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.1);
+    font-size: 100px;
     font-weight: bold;
+    align-items: center;
   }
  .page-link:hoover {
   color: black;
