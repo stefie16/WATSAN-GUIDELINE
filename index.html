@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WATSAN Guideline</title>
     <link href="styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+
 </head>
 <body>
     <!-- Page zawng zawng awmna container -->
@@ -21,21 +23,119 @@
                 <div id="menu-overlay" class="menu-overlay">                  
                   <div class="menu-content">
                     <button id="close-menu-btn" class="close-btn">&times;</button>
-                                   <h2 class="menu">PHOTOS</h2>
-                               <p class="img">Thlalak Upload Rawh</p>
-                          <input id="image-upload-input" type="file" accept="image/*" style="display: none;">
-                          <label for="image-upload-input" class="upload-label">Thlalak Thlang Rawh</label>
 
-                              <!--=====THLALAK PREVIEW====--> 
-                              
-                      <div class="preview-container"> 
-                           <img id="image-preview" src="" alt="Thlalak Preview">
-                      </div>
-                  </div>
+                     <button id="open-form-btn" class="form-btn">watsan</button>
+                     <div id="form-overlay" class="form-overlay">
+                     <div class="form-content">
+                      <button id="back-form-btn" class="back-btn">&times;</button>
+                   <form action="https://formspree.io/f/mldlyldv" method="POST">
+                      <label for="block">Block</label>
+                    <select id="block" class="block">
+                      <option value="">--Block thlang rawh--</option>
+                      <option value="bungtlang">Bungtlang</option>
+                      <option value="lawngtlai">Lawngtlai</option>
+                      <option value="sangau">Sangau</option>
+                      <option value="chawngte">Chawngte</option>
+                    </select>
+                    <label for="village">Village</label>
+                    <select id="village" class="village">
+                      <option value="">--Village thlang rawh--</option>
+                    </select>
+              
+                    <span class="phone">
+                     <label for="chairman">Chairman</label>
+                     <input type="text" id="chairman" placeholder="Chairman Hming" name="chairman-hming" required>
+                     
+                     <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     <span class="phone">
+                     <label for="secretary">Secretary</label>
+                     <input type="text" id="secretary" placeholder="Hming" name="secret  ry-hming" required>
+                     
+                      <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     <span class="phone">
+                     <label for="treasurer">Treasurer</label>
+                     <input type="text" id="treasurer" placeholder="Hming" name="treasurer-hming" required>
+                     
+                     <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     <span class="phone">
+                     <label for="fin. secretary">Fin. Secretary</label>
+                     <input type="text" id="fin-secretary" placeholder="Hming" name="fin.secretary-hming" required>
+                     
+                     <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     <span class="phone">
+                     <label for="member1">member</label>
+                     <input type="text" id="mwmber1" name="member-hming" required>
+                     
+                     <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     <span class="phone">
+                     <label for="member1">member</label>
+                     <input type="text" id="mwmber1" name="member-hming" required>
+                     
+                     <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     <span class="phone">
+                     <label for="member1">member</label>
+                     <input type="text" id="mwmber1" name="member-hming" required>
+                     
+                     <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     <span class="phone">
+                     <label for="member1">member</label>
+                     <input type="text" id="mwmber1" name="member-hming" required> 
+                     
+                     <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     <span class="phone">
+                     <label for="member1">member</label>
+                     <input type="text" id="mwmber1" name="member-hming" required>
+                     
+                     <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     <span class="phone">
+                     <label for="swachhagrahi">Swachhagrahi</label>
+                     <input type="text" id="swachhagrahi" name="swachha-hming" required>
+                     
+                     <label for="phone">Ph/no.</label>
+                     <input type="text" id="phone" placeholder="Phone Number">
+                     </span>
+                     
+                     <div id="footer-buttons">
+                     <label for="file-upload" class="custom-file-upload">Select Photo </label>
+                     <input type="file" id="file-upload" name="photo" accept="image/*" style="display:none;">
+                     <input type="submit" value="submit" >
+                     </div>
+                     </div>
+                     </div>
+                     </form>
+                     <button id="open-upload-btn" class="upload-btn">photo</button>
+              <div id="upload-overlay" class="upload-overlay">
+                <div class="upload-content">
+                  <button id="back-upload-btn" class="back-btn">&times;</button>
+                  
+                  
+                   
+                </div>
+              </div>
+              
+                 </div>
                 </div>
 
-                    
-                      
+        
+                
 
                     
 

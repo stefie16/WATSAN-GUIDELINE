@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // A DINGLAMA SWIPE (Swipe Right)
         if (swipeDistance < -swipeThreshold) {
             goToPage(currentPageIndex - 1);}
-        
     }
         
     
@@ -78,9 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuBtn = document.getElementById('menu-btn');
   const menuOverlay = document.getElementById('menu-overlay');
   const closeMenuBtn = document.getElementById('close-menu-btn');
-  const imageUploadInput = document.getElementById('image-upload-input');
-  const imagePreview = document.getElementById('image-preview');
-
+  
   if (menuBtn && menuOverlay && closeMenuBtn) {
     // ===== MENU BUTTON HAWNNA =====
     menuBtn.addEventListener('click', () => {
@@ -92,24 +89,85 @@ document.addEventListener('DOMContentLoaded', () => {
         menuOverlay.style.display = 'none';
     });
 }
-       // ===== THLALAK PREVIEW LEH UPLOAD-NA =====
+      <!--FORM HAWN NA-->
 
-       if (imageUploadInput && imagePreview) {
-        imageUploadInput.addEventListener('change', (event) => {
+      const openFormBtn = document.getElementById('open-form-btn');
+      const formOverlay = document.getElementById('form-overlay');
+      const backFormBtn = document.getElementById('back-form-btn');
+      
+    if (openFormBtn && formOverlay && backFormBtn) {
+      openFormBtn.addEventListener('click', () => {
+        formOverlay.style.display = 'flex';
+      })
+      backFormBtn.addEventListener('click', () => {
+        formOverlay.style.display = 'none';
+      });
+    }
+     
+     
+     <!--UPLOAD HAWN NA-->
+     
+     
+     const openUploadBtn = document.getElementById('open-upload-btn');
+     const uploadOverlay = document.getElementById('upload-overlay');
+     const backUploadBtn = document.getElementById('back-upload-btn');
+    
+  if (openUploadBtn && uploadOverlay && backUploadBtn) {
+    openUploadBtn.addEventListener('click', () => {
+      uploadOverlay.style.display = 'flex';
+    })
+    backUploadBtn.addEventListener('click', () => {
+      uploadOverlay.style.display = 'none';
+    });
+  }
 
-            const file = event.target.files[0];
 
-            if (file) {
-                const reader = new FileReader();
 
-                reader.onload = (e) => {
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            } else {
-                imagePreview.src = '';
-                imagePreview.style.display = 'none';
+  
+document.addEventListener('DOMContentLoaded', function() {
+    // Data (Khua leh Block inzawmna)
+    const data = {
+        bungtlang: ["Bolosora", "Bungtlang S-I", "Bungtlang S-II", "Chamdur P-I", "Chamdur P-II"],
+        lawngtlai: ["Chawngte P", "Chawngtelui", "Chawntlangpui", "Paithar"],
+        sangau: ["Archhuang", "Bualpui NG 'E'", "Bualpui NG 'W'", "Cheural"],
+        chawngte: ["Ajasora-I", "Ajasora-II", "Ajasora-III", "Bilosora"]
+    };
+
+    // HTML atanga element-te lak chhuahna
+    const blockDropdown = document.getElementById('block');
+    const villageDropdown = document.getElementById('village');
+
+    // A hmasa berin element-te hi a awm em kan check phawt ang
+    if (blockDropdown && villageDropdown) {
+        
+        // 'Block' dropdown-a thil an thlan apiangin he function hi a kal ang
+        blockDropdown.addEventListener('change', function() {
+            const selectedBlock = this.value; // Eng block nge an thlan kan la chhuak
+            
+            // 'Village' dropdown kan ti ruak phawt
+            villageDropdown.innerHTML = '<option value="">-- Village thlang rawh --</option>';
+            
+            // Block an thlan chuan (a ruak a nih loh chuan)...
+            if (selectedBlock) {
+                const villages = data[selectedBlock]; // An block thlan mil zelin khaw list kan la chhuak
+                
+                // Khaw list a awm chuan...
+                if (villages) {
+                    villages.forEach(function(villageName) {
+                        // Option thar kan siam
+                        const option = document.createElement('option');
+                        option.value = villageName;
+                        option.textContent = villageName;
+                        
+                        // Village dropdown-ah kan dah lut
+                        villageDropdown.appendChild(option);
+                    });
+                }
             }
         });
+
+    } else {
+        // Element hmuh loh a nih chuan, hei hi alert-in a lo lang ang
+        alert("Error: 'block' emaw 'village' dropdown emaw hmuh a ni lo. HTML ID check rawh.");
     }
+});
